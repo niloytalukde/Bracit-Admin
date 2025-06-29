@@ -13,7 +13,7 @@ const Sidebar = () => {
     { name: "Payslip", link: "/payslip" },
   ];
   return (
-    <div className="  p-4 space-y-4 w-80  h-screen ">
+    <div className="  p-4 space-y-4 w-74  h-screen shadow ">
       {/* Profile Section */}
       <div className="flex items-center space-x-4">
         <img src={logo} alt="Logo" className="w-24 h-24" />
