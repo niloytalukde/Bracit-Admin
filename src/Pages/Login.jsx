@@ -2,17 +2,32 @@ import logo from "../assets/logo.svg";
 
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ setLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (username === "saran" && password === "123456") {
+  //     setLogin(true);
+  //     navigate("/advising"); // go to dashboard route
+  //   } else {
+  //     alert("Invalid credentials! Try again later");
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === "saran" && password === "123456") {
+      localStorage.setItem("isLoggedIn", "true"); // 🔐 persist login
       setLogin(true);
+      navigate("/schedule"); // or dashboard route
     } else {
-      alert("Invalid credentials! Try Agin later");
+      alert("Invalid credentials!");
     }
   };
 
