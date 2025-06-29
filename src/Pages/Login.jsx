@@ -3,30 +3,44 @@ import logo from "../assets/logo.svg";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-export default function Login() {
+export default function Login({ setLogin }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (username === "saran" && password === "123456") {
+      setLogin(true);
+    } else {
+      alert("Invalid credentials! Try Agin later");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">
-          <img
-            src={logo}
-            alt="BRAC Logo"
-            className="w-20 h-20 mb-2"
-          />
-          <h1 className="text-lg font-semibold text-gray-700">BracU Central Login</h1>
+          <img src={logo} alt="BRAC Logo" className="w-20 h-20 mb-2" />
+          <h1 className="text-lg font-semibold text-gray-700">
+            BracU Central Login
+          </h1>
         </div>
 
         {/* Form */}
-        <h2 className="text-xl font-bold mb-4 text-gray-800">Sign in to your account</h2>
-        <form className="space-y-4">
+        <h2 className="text-xl font-bold mb-4 text-gray-800">
+          Sign in to your account
+        </h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium mb-1">Username or email</label>
+            <label className="block text-sm font-medium mb-1">
+              Username or email
+            </label>
             <input
               type="text"
               placeholder="Enter username or email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>
@@ -36,6 +50,8 @@ export default function Login() {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring focus:ring-blue-300"
               />
