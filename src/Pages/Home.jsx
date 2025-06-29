@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import nodata from "../assets/no-data-found.svg";
 
 const Home = () => {
   return (
@@ -22,7 +23,7 @@ const Home = () => {
           </h2>
           <div className="flex justify-center items-center h-40">
             <img
-              src="https://www.svgrepo.com/show/372349/clipboard.svg"
+              src={nodata}
               alt="clipboard"
               className="w-24 h-24 opacity-60"
             />
