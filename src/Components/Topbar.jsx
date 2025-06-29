@@ -1,10 +1,11 @@
-import search from "../assets/search.svg"
-import fullscreen from "../assets/fullscreen_icon.svg"
-import notification from "../assets/notification-bell.svg"
+import search from "../assets/search.svg";
+import fullscreen from "../assets/fullscreen_icon.svg";
+import notification from "../assets/notification-bell.svg";
+import profile from "../assets/profile.jpeg";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 const Topbar = () => {
-      const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="flex items-center justify-between p-4 md:px-8 border-b border-black/90">
       {/* Left: Title */}
@@ -41,17 +42,24 @@ const Topbar = () => {
 
         {/* Icons */}
         <div className="flex gap-4 items-center">
-          <img src={fullscreen} alt="fullscreen" className="h-6 w-6 cursor-pointer" />
-          <img src={notification} alt="notification" className="h-6 w-6 cursor-pointer" />
+          <img
+            src={fullscreen}
+            alt="fullscreen"
+            className="h-6 w-6 cursor-pointer"
+          />
+          <img
+            src={notification}
+            alt="notification"
+            className="h-6 w-6 cursor-pointer"
+          />
           <img
             alt="user profile"
             className="w-10 h-10 border rounded-full object-cover"
-            src="https://source.unsplash.com/40x40/?portrait?1"
+            src={profile}
           />
         </div>
       </div>
     </div>
-
   );
 };
 

@@ -10,16 +10,6 @@ export default function Login({ setLogin }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (username === "saran" && password === "123456") {
-  //     setLogin(true);
-  //     navigate("/advising"); // go to dashboard route
-  //   } else {
-  //     alert("Invalid credentials! Try again later");
-  //   }
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === "saran" && password === "123456") {

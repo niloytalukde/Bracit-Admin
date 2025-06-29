@@ -15,21 +15,22 @@ import Payslip from "./Pages/Payslip";
 
 // Layout for authenticated routes
 const DashboardLayout = ({ children }) => (
-  <div className="grid grid-cols-12 min-h-screen">
-    <div className="col-span-2">
+  <div className="flex flex-col md:flex-row min-h-screen">
+    {/* Sidebar */}
+    <div className="w-full md:w-64 shadow-md">
       <Sidebar />
     </div>
-    <div className="col-span-10">
+
+    {/* Main Content */}
+    <div className="flex-1 flex flex-col">
       <Topbar />
-      <div className="p-4">{children}</div>
+      <main className="flex-1 overflow-y-auto p-4 bg-gray-50">{children}</main>
     </div>
   </div>
 );
 
 const App = () => {
-  // const [login, setLogin] = useState(false);
   const [login, setLogin] = useState(() => {
-    // get login status from localStorage
     return localStorage.getItem("isLoggedIn") === "true";
   });
 
