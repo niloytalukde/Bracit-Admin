@@ -15,7 +15,7 @@ export default function Login({ setLogin }) {
     if (username === "saran" && password === "123456") {
       localStorage.setItem("isLoggedIn", "true"); // 🔐 persist login
       setLogin(true);
-      navigate("/schedule"); // or dashboard route
+      navigate("/home"); // or dashboard route
     } else {
       alert("Invalid credentials!");
     }
