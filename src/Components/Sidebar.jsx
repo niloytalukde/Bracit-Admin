@@ -18,7 +18,7 @@ const Sidebar = () => {
       <div className="flex items-center space-x-4">
         <img src={logo} alt="Logo" className="w-24 h-24" />
         <div>
-          <h2 className="text-lg font-semibold">
+          <h2 className=" font-semibold">
             <span className="font-extrabold">S</span>tudent{" "}
             <span className="font-extrabold">L</span>ifecycle{" "}
             <span className="font-extrabold">M</span>anagement

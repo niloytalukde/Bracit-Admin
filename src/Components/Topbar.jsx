@@ -2,10 +2,29 @@ import search from "../assets/search.svg";
 import fullscreen from "../assets/fullscreen_icon.svg";
 import notification from "../assets/notification-bell.svg";
 import profile from "../assets/profile.jpeg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 const Topbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const profileRef = useRef();
+
+  // Close dropdown when clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "/"; // force reload to login
+  };
+
   return (
     <div className="flex items-center justify-between p-4 md:px-8 border-b border-black/90">
       {/* Left: Title */}
@@ -56,7 +75,45 @@ const Topbar = () => {
             alt="user profile"
             className="w-10 h-10 border rounded-full object-cover"
             src={profile}
+            onClick={() => setProfileOpen(!profileOpen)}
           />
+          {/* Profile Dropdown */}
+          {profileOpen && (
+            <div className="absolute right-0 top-12 mt-2 w-72 bg-white rounded-lg shadow-xl p-4 z-50">
+              <div className="flex items-center gap-3 mb-4">
+                <img
+                  src={profile}
+                  alt="avatar"
+                  className="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <h4 className="text-sm font-bold text-gray-800">
+                    MAHRAF TAHMIN CHOWDHURY
+                  </h4>
+                  <p className="text-xs text-gray-500">
+                    mahraf.tahmin.chowdhury@g.bracu.ac.bd
+                  </p>
+                </div>
+              </div>
+              <ul className="text-sm text-gray-700 space-y-2">
+                <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span> My
+                  Profile
+                </li>
+                <li className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>{" "}
+                  Account Settings
+                </li>
+                <li
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded text-red-600"
+                >
+                  <span className="w-2 h-2 bg-red-500 rounded-full"></span> Sign
+                  Out
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

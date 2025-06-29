@@ -12,6 +12,7 @@ import DepartmentChange from "./Pages/DepartmentChange";
 import Grades from "./Pages/Grades";
 import Probation from "./Pages/Probation";
 import Payslip from "./Pages/Payslip";
+import Home from "./pages/Home";
 
 // Layout for authenticated routes
 const DashboardLayout = ({ children }) => (
@@ -40,6 +41,14 @@ const App = () => {
 
       {login ? (
         <>
+          <Route
+            path="/home"
+            element={
+              <DashboardLayout>
+                <Home />
+              </DashboardLayout>
+            }
+          />
           <Route
             path="/advising"
             element={
